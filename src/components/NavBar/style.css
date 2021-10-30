@@ -1,0 +1,13 @@
+.home ul {
+  display: flex;
+}
+
+.home ul .link {
+  text-decoration: none;
+  color: black;
+  margin-left: 10px;
+}
+
+.link:hover {
+  background-color: #eee;
+}

@@ -1,8 +1,10 @@
 import React from 'react';
 import { Container, Form, Button } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
+import { Link } from 'react-router-dom';
+import AlunoService from '../../sevices/academicos/AlunoService';
 
-const Professor = () => {
+const Alunosa = (props) => {
   const {
     register,
     handleSubmit,
@@ -10,7 +12,8 @@ const Professor = () => {
   } = useForm();
 
   function enviarDados(dados) {
-    console.log(dados);
+    AlunoService.create(dados);
+    props.history.push('/aluno');
   }
 
   return (
@@ -43,14 +46,6 @@ const Professor = () => {
             <Form.Control
               type="number"
               {...register('matricula', { required: true })}
-            />
-          </Form.Group>
-
-          <Form.Group className="mb-3" controlId="salario">
-            <Form.Label>Salario: </Form.Label>
-            <Form.Control
-              type="number"
-              {...register('salario', { required: true })}
             />
           </Form.Group>
 
@@ -111,12 +106,15 @@ const Professor = () => {
           </Form.Group>
 
           <Button variant="success" onClick={handleSubmit(enviarDados)}>
-            Submit
+            Adicionar novo
           </Button>
+          <Link className="btn btn-danger" to="/alunoForm">
+            Voltar
+          </Link>
         </Form>
       </Container>
     </div>
   );
 };
 
-export default Professor;
+export default Alunosa;

@@ -1,8 +1,10 @@
 import React from 'react';
 import { Container, Form, Button } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
+import { Link } from 'react-router-dom';
+import CursoService from '../../sevices/academicos/CursoService';
 
-const Disciplinas = () => {
+const Cursos = (props) => {
   const {
     register,
     handleSubmit,
@@ -10,15 +12,15 @@ const Disciplinas = () => {
   } = useForm();
 
   function enviarDados(dados) {
-    console.log(dados);
+    CursoService.create(dados);
+    props.history.push('/curso');
   }
 
   return (
     <div>
       <Container>
-        <h1>Henrique Fontenele de jesus - 2014290022</h1>
-        <hr />
         <Form>
+          <h4>Cursos</h4>
           <Form.Group className="mb-3" controlId="nome">
             <Form.Label>Nome: </Form.Label>
             <Form.Control
@@ -30,21 +32,32 @@ const Disciplinas = () => {
             )}
           </Form.Group>
 
-          <Form.Group className="mb-3" controlId="curso">
-            <Form.Label>Curso: </Form.Label>
+          <Form.Group className="mb-3" controlId="duracao">
+            <Form.Label>Duracao: </Form.Label>
             <Form.Control
-              type="curso"
-              {...register('curso', { required: true })}
+              type="duracao"
+              {...register('duracao', { required: true })}
+            />
+          </Form.Group>
+
+          <Form.Group className="mb-3" controlId="modalidade">
+            <Form.Label>Modalidade: </Form.Label>
+            <Form.Control
+              type="modalidade"
+              {...register('modalidade', { required: true })}
             />
           </Form.Group>
 
           <Button variant="success" onClick={handleSubmit(enviarDados)}>
-            Submit
+            Adicionar
           </Button>
+          <Link className="btn btn-danger" to="/curso">
+            Voltar
+          </Link>
         </Form>
       </Container>
     </div>
   );
 };
 
-export default Disciplinas;
+export default Cursos;
