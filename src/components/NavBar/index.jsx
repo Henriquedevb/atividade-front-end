@@ -6,21 +6,28 @@ const NavBar = () => {
   return (
     <div className="home">
       <ul>
-        <Link className="link" to="/curso">
-          Cursos
+        <Link className="link" to="/">
+          Home
+        </Link>
+        <Link className="link" to="/modelos">
+          Modelos
+        </Link>
+        <Link className="link" to="/maisVendidas">
+          Mais vendidas
         </Link>
         <br />
-        <Link className="link" to="/disciplina">
-          Disciplinas
+        <Link className="link" to="/consumo">
+          Consumo
         </Link>
         <br />
-        <Link className="link" to="/professor">
-          Professor
+        <Link className="link" to="/precos">
+          Preços
         </Link>
         <br />
-        <Link className="link" to="/aluno">
-          Alunos
+        <Link className="link" to="/avaliacao">
+          Avaliacao
         </Link>
+        <br />
       </ul>
     </div>
   );
